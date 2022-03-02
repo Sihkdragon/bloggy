@@ -17,9 +17,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', [BlogController::class, 'index']);
-Route::get('/{id}', [BlogController::class, 'index']);
 Route::controller(BlogController::class)->group(function () {
-    Route::get('/{id}', 'show');
-    // Route::post('/orders', 'store');
+    Route::get('/', 'index');
+    Route::get('/dashboard', 'dashboard');
+    Route::get('/{identifier}', 'show');
 });

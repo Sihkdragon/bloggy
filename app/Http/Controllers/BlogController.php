@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
@@ -22,9 +23,9 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function dashboard()
     {
-        //
+        return view('Blog.dashboard');
     }
 
     /**
@@ -44,9 +45,9 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show(Request $request, $identifier)
     {
-        return Blog::all()->where('');
+        return DB::table('blogs')->get()->where('id', $identifier);
     }
 
     /**

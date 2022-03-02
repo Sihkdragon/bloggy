@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <title>Bloggy</title>
+    <title>Bloggy | Home</title>
 </head>
 <body>
-    <nav id="navbar" class="bg-slate-600 h-12 py-2">
+    <nav id="navbar" class="bg-slate-900 h-12 py-2">
         <div id="navcontainer" class="container mx-auto  flex justify-between items-center text-white">
             <div id="title" class="text-lg">Bloggy</div>
             <div id="navbar-link">
-                <a href="#" class="mr-5">Home</a>
+                <a href="/" class="mr-5">Home</a>
+                <a href="/dashboard" class="mr-5">Dashboard</a>
                 <a href="#">BlogList</a>
             </div>
         </div>
     </nav>
     <section class="container mx-auto mt-10">
+        {{ asset('css/app.css') }}
         <h1 id="title" class="text-4xl font-bold font-mono">Ini Judul</h1>
         <h4 id="author" class=" text-sm mt-4">Oleh : Ditotisi Rasyid Sumpena</h4>
         <div id="likes" class="text-xs mt-2">72 likes</div>
