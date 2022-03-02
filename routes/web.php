@@ -18,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/', [BlogController::class, 'index']);
+Route::get('/{id}', [BlogController::class, 'index']);
+Route::controller(BlogController::class)->group(function () {
+    Route::get('/{id}', 'show');
+    // Route::post('/orders', 'store');
+});

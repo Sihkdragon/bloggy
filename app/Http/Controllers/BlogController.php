@@ -46,7 +46,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        return Blog::all();
+        return Blog::all()->where('');
     }
 
     /**
