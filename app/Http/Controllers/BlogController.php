@@ -15,9 +15,25 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('Blog.blog');
+        $getDB = DB::table('blogs')->where('id', '11')->get();
+        $data = [
+            'title' => $getDB[0]->title,
+            'author' => $getDB[0]->author,
+            'description' => $getDB[0]->description,
+            'body' => $getDB[0]->body,
+            'likes' => $getDB[0]->likes,
+        ];
+        // dd($data['title']);
+        return view('Blog.blog', $data);
     }
-
+    public function bloglist()
+    {
+        $data = DB::table('blogs')->get();
+        return view('Blog.bloglist', [
+            'blogs' => $data
+        ]);
+        // dd($blogs);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -36,9 +52,17 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('blogs')->insert([
+            'title' => $request->title,
+            'author' => $request->author,
+            'likes' => $request->likes,
+            'description' => $request->description,
+            'body' => $request->body,
+            'created_at' => now($tz = 'GMT+7'),
+            'updated_at' => now($tz = 'GMT+7')
+        ]);
+        return redirect('/');
     }
-
     /**
      * Display the specified resource.
      *
@@ -47,9 +71,12 @@ class BlogController extends Controller
      */
     public function show(Request $request, $identifier)
     {
-        return DB::table('blogs')->get()->where('id', $identifier);
+        $data = DB::table('blogs')->where('id', $identifier)->get()->first();
+        // dd($data->id);
+        return view('Blog.preview', [
+            'blog' => $data
+        ]);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
