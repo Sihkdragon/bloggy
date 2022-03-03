@@ -15,13 +15,14 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $getDB = DB::table('blogs')->where('id', '11')->get();
+        $getDB = DB::table('blogs')->where('id', '1')->get();
         $data = [
             'title' => $getDB[0]->title,
             'author' => $getDB[0]->author,
             'description' => $getDB[0]->description,
             'body' => $getDB[0]->body,
             'likes' => $getDB[0]->likes,
+            'TITLE' => 'Home'
         ];
         // dd($data['title']);
         return view('Blog.blog', $data);
@@ -30,7 +31,8 @@ class BlogController extends Controller
     {
         $data = DB::table('blogs')->get();
         return view('Blog.bloglist', [
-            'blogs' => $data
+            'blogs' => $data,
+            'TITLE' => 'Bloglist'
         ]);
         // dd($blogs);
     }
@@ -41,7 +43,9 @@ class BlogController extends Controller
      */
     public function dashboard()
     {
-        return view('Blog.dashboard');
+        return view('Blog.dashboard', [
+            'TITLE' => 'Dashboard'
+        ]);
     }
 
     /**
@@ -52,16 +56,17 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('blogs')->insert([
-            'title' => $request->title,
-            'author' => $request->author,
-            'likes' => $request->likes,
-            'description' => $request->description,
-            'body' => $request->body,
-            'created_at' => now($tz = 'GMT+7'),
-            'updated_at' => now($tz = 'GMT+7')
-        ]);
-        return redirect('/');
+        // DB::table('blogs')->insert([
+        //     'title' => $request->title,
+        //     'author' => $request->author,
+        //     'likes' => $request->likes,
+        //     'description' => $request->description,
+        //     'body' => $request->body,
+        //     'created_at' => now($tz = 'GMT+7'),
+        //     'updated_at' => now($tz = 'GMT+7')
+        // ]);
+        // return redirect('/');
+        dd($request->body);
     }
     /**
      * Display the specified resource.
@@ -74,7 +79,8 @@ class BlogController extends Controller
         $data = DB::table('blogs')->where('id', $identifier)->get()->first();
         // dd($data->id);
         return view('Blog.preview', [
-            'blog' => $data
+            'blog' => $data,
+            'TITLE' => 'Home'
         ]);
     }
     /**
