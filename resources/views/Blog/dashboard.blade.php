@@ -2,9 +2,9 @@
 
 @section('content')
 <x-navbar/>
-    <section class="container mx-auto mt-10 min-h-screen border-2 border-black block">
+    <section class="container mx-auto mt-10 min-h-scree">
         <form action="/store" method="post">
-        <div class="flex flex-row min-h-screen justify-between bg-purple-400" id="form-container">
+        <div class="flex flex-row min-h-screen justify-between" id="form-container">
                 {{-- Title --}}
                 @csrf
                 <div class="left">
@@ -33,20 +33,22 @@
                             name="cover" id="cover" name="cover">
                     </div>
                     {{-- Desc --}}
-                    <div class="description-group  mb-4">
+                    <div class="description-group  mb-4 h-1/2">
                         <label for="description" class="font-semibold">Blog Description</label>
-                        <input class="block  w-full h-full border border-slate-500 rounded-sm focus:outline-none p-2"
-                            type="textarea" name="description" id="description" name="description" size="50">
+                        <input class="block w-full border border-slate-500 rounded-sm focus:outline-none p-2"
+                            type="text" name="description" id="description" name="description"">
                     </div>
-                    <input type="submit" value="Submit"
-                        class="px-5 py-1 bg-slate-500 text-white rounded-md cursor-pointer hover:bg-slate-300 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-900 mr-3">
-                    <input type="reset" value="Reset"
-                        class="px-5 py-1 bg-slate-500 text-white rounded-md cursor-pointer hover:bg-slate-300 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-900">
                 </div>
                 {{-- body --}}
-                <div class="body-group  mb-4 right float-right min-h-screen bg-green-400">
+                <div class="body-group  mb-4 right float-right min-h-screen  w-4/5">
                     <label for="body" class="font-semibold">Blog Body</label>
                     <x-forms.tinymce-editor />
+                    <div class="button-group   mt-5  float-right">
+                        <input type="submit" value="Submit"
+                        class="px-5 py-1 bg-slate-500 text-white rounded-md cursor-pointer hover:bg-slate-300 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-900 mr-3">
+                        <input type="reset" value="Reset"
+                        class="px-5 py-1 bg-slate-500 text-white rounded-md cursor-pointer hover:bg-slate-300 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-900">
+                    </div>
                 </div>
             </form>
         </div>

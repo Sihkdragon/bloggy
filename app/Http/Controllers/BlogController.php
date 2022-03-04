@@ -77,7 +77,7 @@ class BlogController extends Controller
     public function show(Request $request, $identifier)
     {
         $data = DB::table('blogs')->where('id', $identifier)->get()->first();
-        // dd($data->id);
+        // dd($data->body);
         return view('Blog.preview', [
             'blog' => $data,
             'TITLE' => 'Home'

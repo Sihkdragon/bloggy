@@ -8,7 +8,7 @@
         <div id="likes" class="text-xs mt-2">{{$blog->likes}} likes</div>
         <img src="https://source.unsplash.com/900x350" alt="this is blog cover" class="w-full mt-4">
         <div id="body" class=" mt-7">
-            {{$blog->body}}
+            {!!$blog->body!!}
         </div>
     </section>
 @endsection

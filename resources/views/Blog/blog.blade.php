@@ -9,7 +9,7 @@
         {{-- <img src="https://picsum.photos/seed/picsum/700/350" alt="this is blog cover" class="mx-auto mt-4"> --}}
         <img src="https://source.unsplash.com/900x350" alt="this is blog cover" class="w-full mt-4">
         <div id="body" class=" mt-7">
-            {{$body}}
+            {!!$body!!}
         </div>
     </section>
 @endsection
